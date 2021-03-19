@@ -1,0 +1,1 @@
+// The DB is not being used yet, but here we will use a key to connect to the MongoDB Atlas Platform for storing data

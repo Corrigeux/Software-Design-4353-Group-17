@@ -1,0 +1,53 @@
+<nav class="nav-inline border-radius">
+  <ul>
+  	<li >
+      <a href="fuelquote" class="button nav-link box-shadow-l">Fuel Quote</a>
+    </li>
+    <li class="nav-heading">
+    	<h1 class="display-title display-title-l">Project</h1>
+    </li>
+    <li class="float-right">
+      <a href="login" class="button nav-link box-shadow-l">Login</a>
+    </li>
+    <li class="float-right">
+      <a href="register" class="button nav-link box-shadow-l">Registration</a>
+    </li>
+  </ul>
+</nav>	
+
+<div class="login">
+
+	<div class="padding-m border-radius background-white main-login box-shadow-xl margin-top-xxl">
+		<h1 class="color-dark margin-top-m text-center display-title display-title-xl padding-bottom-m">Register</h1>
+    <form>
+      <%- include ("./partials/messages"); %>
+    <p class="field">
+    <label for="form-simple-username" class="color-dark display-title display-title-1">Username</label>
+    <input type="name" id="form-simple-username" name="username" placeholder="Enter Username" class="color-dark input-xl box-shadow-l" />
+  </p>
+  <p class="field">
+    <label for="form-simple-email" class="color-dark display-title display-title-1">Email</label>
+    <input type="email" id="form-simple-email" name="email" placeholder="Enter Email" class="color-dark input-xl box-shadow-l" />
+  </p>
+  <p class="field">
+    <label for="form-simple-password" class="color-dark display-title display-title-1">Password</label>
+    <input type="password" id="form-simple-password" name="password" placeholder="Enter Password" class="color-dark input-xl box-shadow-l" />
+  </p>
+  <p class="field">
+    <label for="form-simple-password2" class="color-dark display-title display-title-1">Enter Password Again</label>
+    <input type="password" id="form-simple-password2" name="password2" placeholder="Enter Password Again" class="color-dark input-xl box-shadow-l" />
+  </p>
+  <p class="field text-center">
+    <button type="submit" class="button color-button box-shadow-l display-title display-title-s">Login</button>
+    <button type="reset" class="button color-button box-shadow-l display-title display-title-s">Reset</button>
+  </p>
+</form>
+
+	</div>
+
+<div class="padding-s border-radius background-white margin-top-s main-login text-align-center box-shadow-xl margin-bottom-m">
+  <h1 class="display-title display-title-m">Register</h1>
+  <a href="login">Login Here</a>
+</div>
+
+</div>

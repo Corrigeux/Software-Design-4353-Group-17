@@ -1,0 +1,5 @@
+<% if(typeof errors != 'undefined') { %>
+	<% errors.forEach(function(error) { %>
+		<h3> <%= error.msg %> </h3>	
+	<% }) %>
+<% } %>

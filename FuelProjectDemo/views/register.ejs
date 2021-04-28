@@ -1,16 +1,16 @@
 <nav class="nav-inline border-radius">
   <ul>
   	<li >
-      <a href="fuelquote" class="button nav-link box-shadow-l">Fuel Quote</a>
+      <a href="/quote" class="button nav-link box-shadow-l">Fuel Quote</a>
     </li>
     <li class="nav-heading">
     	<h1 class="display-title display-title-l">Project</h1>
     </li>
     <li class="float-right">
-      <a href="login" class="button nav-link box-shadow-l">Login</a>
+      <a href="/users/login" class="button nav-link box-shadow-l">Login</a>
     </li>
     <li class="float-right">
-      <a href="register" class="button nav-link box-shadow-l">Registration</a>
+      <a href="/users/register" class="button nav-link box-shadow-l">Registration</a>
     </li>
   </ul>
 </nav>	
@@ -19,9 +19,9 @@
 
 	<div class="padding-m border-radius background-white main-login box-shadow-xl margin-top-xxl">
 		<h1 class="color-dark margin-top-m text-center display-title display-title-xl padding-bottom-m">Register</h1>
+     <%- include partials/messages %>
 
     <form action="/users/register" method="POST">
-      <%- include ("./partials/messages"); %>
     <p class="field">
     <label for="form-simple-username" class="color-dark display-title display-title-1">Username</label>
     <input type="name" id="form-simple-username" name="name" placeholder="Enter Username" class="color-dark input-xl box-shadow-l" />

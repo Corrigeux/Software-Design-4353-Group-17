@@ -94,3 +94,10 @@ body{
 	margin-left: 20px;
 }
 
+.display-none{
+	display: none;
+}
+
+.profile-info{
+	font-size: 15px;
+}

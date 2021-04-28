@@ -1,19 +1,16 @@
 <nav class="nav-inline border-radius">
   <ul>
     <li >
-      <a href="fuelquote" class="button nav-link">Fuel Quote</a>
-    </li>
-    <li class="nav-heading">
-      <h1 class="display-title display-title-l">Project</h1>
+      <a href="/quote" class="button nav-link">Fuel Quote</a>
     </li>
           <li class="float-right">
-      <a href="quotehistory" class="button nav-link">Fuel Quote History</a>
+      <a href="/fuelhistory" class="button nav-link">Fuel Quote History</a>
     </li>
     <li class="float-right">
-      <a href="profile" class="button nav-link">My Profile</a>
+      <a href="/myprofile" class="button nav-link">My Profile</a>
     </li>
     <li class="float-right">
-      <a href="register" class="button nav-link">Sign Out</a>
+      <a href="/users/logout" class="button nav-link">Sign Out</a>
     </li>
   </ul>
 </nav>  
@@ -22,6 +19,8 @@
 
   <div class="padding-m border-radius background-white profile-page box-shadow-xl margin-top-xxl margin-bottom-xxl">
         <h1 class="color-dark margin-top-m text-center display-title display-title-xl padding-bottom-m">Fuel Quote</h1>
+        <p id="quote" class="quote display-none"> <%= quote %></p>
+        <p id="state" class="state display-none"> <%= state %></p>
         <form action="/savequote" method="POST">
   <p class="field">
     <label for="form-simple-gallons" class="color-dark display-title display-title-1">Gallons</label>
@@ -29,19 +28,24 @@
   </p>
   <p class="field">
     <label for="form-simple-address" class="color-dark display-title display-title-1">Delivery Address</label>
-    <input type="address" id="form-simple-address" name="address" placeholder="Address" class="color-dark input-xl"  />
+    <input type="address" id="form-simple-address" name="address" placeholder="Address" class="color-dark input-xl"  value=" <%= address %>" readonly/>
   </p>
     <p class="field">
     <label for="form-simple-date" class="color-dark display-title display-title-1">Delivery Date</label>
     <input type="date" id="form-simple-date" name="delivery" placeholder="Enter gallons" class="color-dark input-xl" />
   </p>
+
+  <p class="field text-center">
+     <button id="getquote" type="button" class="button button-l color-button box-shadow-m display-title display-title-xl">Get Quote</button>
+  </p>
+
    <p class="field">
     <label for="form-simple-price" class="color-dark display-title display-title-1">Suggested Price</label>
-    <input type="number" id="form-simple-price" name="price" placeholder="Suggested Price" class="color-dark input-xl"  />
+    <input type="number" id="form-simple-price" name="price" placeholder="Suggested Price" class="color-dark input-xl" value=""  readonly />
   </p>
      <p class="field">
     <label for="form-simple-price" class="color-dark display-title display-title-1">Total Amount Due</label>
-    <input type="number" id="form-simple-price" name="total" placeholder="Total Amount Due" class="color-dark input-xl" />
+    <input type="number" id="form-simple-total" name="total" placeholder="Total Amount Due" class="color-dark input-xl" value="" readonly />
   </p>
   <p class="field text-center">
     <button type="submit" class="button button-l color-button box-shadow-m display-title display-title-xl">Submit</button>
@@ -49,3 +53,57 @@
   </p>
 </form>
   </div>
+
+
+  <script>
+     let gallons = document.querySelector("#form-simple-gallons")
+
+     let getquote = document.querySelector("#getquote")
+     let quote = document.querySelector("#quote")
+     let state = document.querySelector("#state")
+
+     let suggestedprice = document.querySelector("#form-simple-price")
+     let totalprice = document.querySelector("#form-simple-total")
+
+
+     getquote.addEventListener('click', (e) => {
+
+        let location = 0
+        let ratehist = 0
+        let price = 0
+        let gallonsreq = 0
+
+        if(state.textContent == 1){
+          location = 0.02
+        }else{
+          location = 0.04
+        }
+
+        if(quote){
+          if(quote.textContent >= 1){
+            ratehist = .01
+          }else{
+            ratehist = 0
+          }
+        }
+
+        if(gallons.value > 1000){
+          gallonsreq = 0.02
+        }else{
+          gallonsreq = 0.03
+        }
+
+        console.log(location, ratehist, gallonsreq)
+        let margin = (location - ratehist + gallonsreq + .10 ) * 1.50
+        console.log(margin)
+        let suggested = 1.50 + margin  
+        let total = Number(gallons.value) * suggested
+
+        suggestedprice.value = suggested
+        totalprice.value = total
+
+     })
+
+
+
+  </script>

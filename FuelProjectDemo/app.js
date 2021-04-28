@@ -37,12 +37,10 @@ app.listen(PORT, () => {
 	console.log("Server started")
 })
 
-// CSS
 app.use('/', express.static('views'))
-
-app.use('/users/login', express.static('views'))
-app.use('/users/register', express.static('views'))
 
 app.use('/', require('./routes/index'))
 
 app.use('/users', require('./routes/users'))
+
+// CSS

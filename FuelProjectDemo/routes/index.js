@@ -100,7 +100,6 @@ router.get("/myprofile", ensureAuthenticated, (req, res) => {
 
 	res.render("myprofile", {data: userprofile})
 	}else{
-
 		res.render("myprofile")
 	}
 
@@ -108,10 +107,13 @@ router.get("/myprofile", ensureAuthenticated, (req, res) => {
 })
 
 router.get("/quote", ensureAuthenticated, (req, res) => {
-	res.render("newquote")
+	let address = req.user.userdetails[0].address
+	let state = req.user.userdetails[0].state
+	let quote = req.user.fuelquotes.length
+	res.render("newquote", {address: address, quote: quote, state: state })
 })
 
-// Here we save the Fuel Quotes, this is where quote requests quote.
+
 router.post("/savequote", ensureAuthenticated, (req,res) => {
 	let email = req.user.email
 	const {gallons, address, delivery, price, total} = req.body
@@ -141,12 +143,11 @@ router.get("/fuelhistory", ensureAuthenticated, (req,res) => {
 
 	let quotes = req.user.fuelquotes
 	console.log(quotes)
+	let delivery = req.user.userdetails[0].address
 
-	res.render("fuelhistory", {quotes})
+	res.render("fuelhistory", {quotes, deliver: delivery})
 
 })
-
-
 
 
 module.exports = router

@@ -1,17 +1,14 @@
 <nav class="nav-inline border-radius">
   <ul>
     <li >
-      <a href="fuelquote" class="button nav-link box-shadow-l">Fuel Quote</a>
-    </li>
-    <li class="nav-heading">
-      <h1 class="display-title display-title-l">Project</h1>
+      <a href="/quote" class="button nav-link box-shadow-l">Fuel Quote</a>
     </li>
         </li>
           <li class="float-right">
-      <a href="quotehistory" class="button nav-link box-shadow-l">Fuel Quote History</a>
+      <a href="/fuelhistory" class="button nav-link box-shadow-l">Fuel Quote History</a>
     </li>
     <li class="float-right">
-      <a href="profile" class="button nav-link box-shadow-l">My Profile</a>
+      <a href="/myprofile" class="button nav-link box-shadow-l">My Profile</a>
     </li>
     <li class="float-right">
       <a href="/users/logout" class="button nav-link box-shadow-l">Sign Out</a>
@@ -26,12 +23,18 @@
 
 
       <% if(data) { %>
-    <ul>
+    <ul class="profile-info">
       <li><h1>Name: </h1> <p><%= data.name %> </p> </li>
       <li><h1>Address: </h1> <p><%= data.address %> </p> </li>
       <li><h1>Second Address: </h1> <p><%= data.address2 %> </p> </li>
       <li><h1>City: </h1> <p><%= data.city %> </p> </li>
       <li><h1>Zipcode: </h1> <p><%= data.zipcode %> </p> </li>
+      <% if(data.state == 1) { %>
+      <li><h1>Zipcode: </h1> <p>Texas </p> </li>
+       <% } else{ %>
+      <li><h1>Zipcode: </h1> <p>Out-of-State</p> </li>
+       <% } %>
+
     </ul>
        <% } else{ %>
           <h1> Please fill out information in the profile page </h1> 

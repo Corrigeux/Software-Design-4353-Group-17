@@ -1,6 +1,6 @@
 # Starting Project and installing packages
 ``` npm install ```
 
-# Make sure you have Nodemon installed then run
+# To run, make sure you have Nodemon installed.
 ```npm install -g nodemon```
 ```nodemon app.js```
